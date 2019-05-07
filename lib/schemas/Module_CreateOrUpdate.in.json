@@ -1,0 +1,93 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "automationAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "moduleName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The parameters supplied to the create or update module operation.",
+            "properties": {
+                "location": {
+                    "description": "Gets or sets the location of the resource.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Gets or sets name of the resource.",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Gets or sets the module create properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "contentLink": {
+                            "description": "Gets or sets the module content link.",
+                            "properties": {
+                                "contentHash": {
+                                    "description": "Gets or sets the hash.",
+                                    "properties": {
+                                        "algorithm": {
+                                            "description": "Gets or sets the content hash algorithm used to hash the content.",
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "description": "Gets or sets expected hash value of the content.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "algorithm",
+                                        "value"
+                                    ],
+                                    "type": "object"
+                                },
+                                "uri": {
+                                    "description": "Gets or sets the uri of the runbook content.",
+                                    "type": "string"
+                                },
+                                "version": {
+                                    "description": "Gets or sets the version of the content.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "contentLink"
+                    ]
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Gets or sets the tags attached to the resource.",
+                    "type": "object"
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
